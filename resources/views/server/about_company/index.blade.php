@@ -43,12 +43,12 @@
                                 </button>
                         </div>
                     @endif
-                    <h5 class="content-header-title float-left pr-1 mb-0">Basic Settings</h5>
+                    <h5 class="content-header-title float-left pr-1 mb-0">About Company</h5>
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb p-0 mb-0">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                             </li>
-                            <li class="breadcrumb-item active">Company Settings
+                            <li class="breadcrumb-item active">About Company Settings
                             </li>
                         </ol>
                     </div>
@@ -62,7 +62,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Details List</h5>
+                            <h5 class="card-title">About Page</h5>
                             {{-- <div class="heading-elements">
                                 <ul class="list-inline mb-0">
                                     <li class="ml-2"><a href="{{ route('review.create') }}" class="btn btn-primary">+ Create</a></li>
@@ -75,52 +75,28 @@
                                     <table class="table zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th>Company</th>
-                                                <th>Logo</th>
-                                                <th>Favicon</th>
-                                                <th>Address</th>
-                                                <th>Contact</th>
-                                                <th>Operation Hours</th>
-                                                <th>Social Link</th>
-                                                {{-- <th>Map</th> --}}
+                                                <th>Title</th>
+                                                <th>Peragraph 1</th>
+                                                <th>Peragraph 1</th>
+                                                <th>Our Mission</th>
+                                                <th>Our Vision</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if ($detail)
+                                            @if ($about)
                                                     <tr>
-                                                        <td class="text-bold-600 text-primary" > {{ $detail->name }}</td>
-                                                        <td><img src="{{ asset('images/logo/'.$detail->logo) }}" alt="" height="50px" width="50px"></td>
-                                                        <td><img src="{{ asset('images/logo/'.$detail->favicon) }}" alt="" height="30px" width="30px"></td>
-                                                        <td>{{ $detail->address }}</td>
-                                                        <td><span class="text-primary">P:</span> {{ $detail->phone }}<br>
-                                                            <span class="text-primary">E:</span> {{ $detail->email }}<br>
-                                                            @if ($detail->fax)
-                                                            <span class="text-primary">F:</span> {{ $detail->fax }}
-                                                            @endif
-                                                        </td>
-                                                        <td>{{ $detail->operation_hour_1 }}<br>
-                                                            @if ($detail->operation_hour_2)
-                                                                {{ $detail->operation_hour_2 }}
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            @if ($detail->facebook)
-                                                               <i class="bx bxl-facebook text-primary"></i> : {{ $detail->facebook }}
-                                                            @endif <br>
-                                                            @if ($detail->twitter)
-                                                            <i class="bx bxl-twitter text-primary"></i> : {{ $detail->twitter }}
-                                                            @endif <br>
-                                                            @if ($detail->instagram)
-                                                            <i class="bx bxl-instagram text-primary"></i> : {{ $detail->instagram }}
-                                                            @endif <br>
-                                                        </td>
-                                                        {{-- <td class="w-25 overflow-hidden">{{ $detail->google_location }}</td> --}}
+                                                        <td class="text-bold-600">{{ $about->title }}</td>
+                                                        <td>{{ $about->pera_1 }}</td>
+                                                        <td>{{ $about->pera_2 }}</td>
+                                                        <td>{{ $about->our_mission }}</td>
+                                                        <td>{{ $about->our_vision }}</td>
+                                                        
                                                         <td>
                                                             <div class="dropdown">
                                                                 <span class="bx bx-dots-vertical-rounded font-medium-3 dropdown-toggle nav-hide-arrow cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu"></span>
                                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                                    <a class="dropdown-item" href="{{ route('company-details.edit',$detail->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
+                                                                    <a class="dropdown-item" href="{{ route('about-company.edit',$about->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
                                                                     {{-- <form action="{{ route('company-details.destroy',$detail->id) }}" method="post"> @csrf @method('Delete')
                                                                         <button type="submit" class="dropdown-item"><i class="bx bx-trash mr-1"></i> delete</button>
                                                                     </form> --}}
@@ -135,19 +111,15 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Company</th>
-                                                <th>Logo</th>
-                                                <th>Favicon</th>
-                                                <th>Address</th>
-                                                <th>Contact</th>
-                                                <th>Operation Hours</th>
-                                                <th>Social Link</th>
-                                                {{-- <th>Map</th> --}}
+                                                <th>Title</th>
+                                                <th>Peragraph 1</th>
+                                                <th>Peragraph 1</th>
+                                                <th>Our Mission</th>
+                                                <th>Our Vision</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
                                     </table>
-                                    <iframe src="{{ $detail->google_location }}" width="1500" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
                             </div>
                         </div>

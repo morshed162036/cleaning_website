@@ -268,6 +268,17 @@
                             class="menu-title">Counter</span></a>
                 </li>
 
+                <li class=" navigation-header"><span>About Page</span>
+                 <li class=" nav-item"><a href="{{ route('about-company.index') }}"><i class="bx bxs-categories"></i><span
+                            class="menu-title">About Company</span></a>
+                </li>
+                 <li class=" nav-item"><a href="{{ route('team-member.index') }}"><i class="bx bxs-categories"></i><span
+                            class="menu-title">Team Member</span></a>
+                </li>
+                 <li class=" nav-item"><a href="{{ route('gallery.index') }}"><i class="bx bxs-categories"></i><span
+                            class="menu-title">Gallery</span></a>
+                </li>
+
 
                 <li class=" navigation-header"><span>Settings</span>
                 </li>

@@ -43,12 +43,12 @@
                                 </button>
                         </div>
                     @endif
-                    <h5 class="content-header-title float-left pr-1 mb-0">Basic Settings</h5>
+                    <h5 class="content-header-title float-left pr-1 mb-0">Team Member Table</h5>
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb p-0 mb-0">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                             </li>
-                            <li class="breadcrumb-item active">Company Settings
+                            <li class="breadcrumb-item active">Team Members
                             </li>
                         </ol>
                     </div>
@@ -62,12 +62,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Details List</h5>
-                            {{-- <div class="heading-elements">
+                            <h5 class="card-title">Team Member List</h5>
+                            <div class="heading-elements">
                                 <ul class="list-inline mb-0">
-                                    <li class="ml-2"><a href="{{ route('review.create') }}" class="btn btn-primary">+ Create</a></li>
+                                    <li class="ml-2"><a href="{{ route('team-member.create') }}" class="btn btn-primary">+ Create</a></li>
                                 </ul>
-                            </div> --}}
+                            </div>
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">
@@ -75,79 +75,59 @@
                                     <table class="table zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th>Company</th>
-                                                <th>Logo</th>
-                                                <th>Favicon</th>
-                                                <th>Address</th>
-                                                <th>Contact</th>
-                                                <th>Operation Hours</th>
+                                                <th>Name</th>
+                                                <th>Designation</th>
                                                 <th>Social Link</th>
-                                                {{-- <th>Map</th> --}}
+                                                <th>Description</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if ($detail)
+                                            @if ($members)
+                                                @foreach ($members as $member)
                                                     <tr>
-                                                        <td class="text-bold-600 text-primary" > {{ $detail->name }}</td>
-                                                        <td><img src="{{ asset('images/logo/'.$detail->logo) }}" alt="" height="50px" width="50px"></td>
-                                                        <td><img src="{{ asset('images/logo/'.$detail->favicon) }}" alt="" height="30px" width="30px"></td>
-                                                        <td>{{ $detail->address }}</td>
-                                                        <td><span class="text-primary">P:</span> {{ $detail->phone }}<br>
-                                                            <span class="text-primary">E:</span> {{ $detail->email }}<br>
-                                                            @if ($detail->fax)
-                                                            <span class="text-primary">F:</span> {{ $detail->fax }}
-                                                            @endif
-                                                        </td>
-                                                        <td>{{ $detail->operation_hour_1 }}<br>
-                                                            @if ($detail->operation_hour_2)
-                                                                {{ $detail->operation_hour_2 }}
-                                                            @endif
-                                                        </td>
+                                                        <td class="text-bold-600 text-primary" ><img src="{{ asset('images/team/'.$member->image) }}" alt="" height="50px" class="mr-1"> {{ $member->name }}</td>
+                                                        <td>{{ $member->designation }}</td>
                                                         <td>
-                                                            @if ($detail->facebook)
-                                                               <i class="bx bxl-facebook text-primary"></i> : {{ $detail->facebook }}
+                                                            @if ($member->facebook)
+                                                               <i class="bx bxl-facebook text-primary"></i> : {{ $member->facebook }}
                                                             @endif <br>
-                                                            @if ($detail->twitter)
-                                                            <i class="bx bxl-twitter text-primary"></i> : {{ $detail->twitter }}
+                                                            @if ($member->twitter)
+                                                            <i class="bx bxl-twitter text-primary"></i> : {{ $member->twitter }}
                                                             @endif <br>
-                                                            @if ($detail->instagram)
-                                                            <i class="bx bxl-instagram text-primary"></i> : {{ $detail->instagram }}
+                                                            @if ($member->instagram)
+                                                            <i class="bx bxl-instagram text-primary"></i> : {{ $member->instagram }}
                                                             @endif <br>
                                                         </td>
-                                                        {{-- <td class="w-25 overflow-hidden">{{ $detail->google_location }}</td> --}}
+                                                        <td class="w-25">{{ $member->description }}</td>
                                                         <td>
                                                             <div class="dropdown">
                                                                 <span class="bx bx-dots-vertical-rounded font-medium-3 dropdown-toggle nav-hide-arrow cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu"></span>
                                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                                    <a class="dropdown-item" href="{{ route('company-details.edit',$detail->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
-                                                                    {{-- <form action="{{ route('company-details.destroy',$detail->id) }}" method="post"> @csrf @method('Delete')
+                                                                    <a class="dropdown-item" href="{{ route('team-member.edit',$member->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
+                                                                    <form action="{{ route('team-member.destroy',$member->id) }}" method="post"> @csrf @method('Delete')
                                                                         <button type="submit" class="dropdown-item"><i class="bx bx-trash mr-1"></i> delete</button>
-                                                                    </form> --}}
+                                                                    </form>
                                                                     
                                                                 </div>
                                                             </div>
                                                         </td>
                                                     </tr>   
+                                                @endforeach
                                             @else
                                                 {{ 'No Data Found' }}
                                             @endif
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Company</th>
-                                                <th>Logo</th>
-                                                <th>Favicon</th>
-                                                <th>Address</th>
-                                                <th>Contact</th>
-                                                <th>Operation Hours</th>
+                                                <th>Name</th>
+                                                <th>Designation</th>
                                                 <th>Social Link</th>
-                                                {{-- <th>Map</th> --}}
+                                                <th>Description</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
                                     </table>
-                                    <iframe src="{{ $detail->google_location }}" width="1500" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -190,5 +170,38 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('admin_template/app-assets/js/scripts/datatables/datatable.js') }}"></script>
     <!-- END: Page JS-->
+    <script>
+
+        $(document).ready(function (){
+            $(document).on("click", ".updateBannerStatus", function () {
+                var status = $(this).children("label").attr("status");
+                var banner_id = $(this).attr("banner_id");
+
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    type: "post",
+                    url: "{{ route('updateBannerStatus') }}",
+                    data: { status: status, banner_id: banner_id },
+                    success: function (resp) {
+                        if (resp["status"] == 'Inactive') {
+                            $("#banner-" + banner_id).html(
+                                "<label class='badge badge-danger' status='Inactive'>Inactive</label>"
+                            );
+                        } else if (resp["status"] == 'Active') {
+                            $("#banner-" + banner_id).html(
+                                "<label class='badge badge-success' status='Active'>Active</label>"
+                            );
+                        }
+                    },
+                    error: function () {
+                        alert("Error");
+                    },
+                });
+            });
+        })
+        
+    </script>
 @endsection
 

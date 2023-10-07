@@ -8,6 +8,9 @@ use App\Http\Controllers\Server\Service\ServiceDetailController;
 use App\Http\Controllers\Server\ReviewController;
 use App\Http\Controllers\Server\CounterController;
 use App\Http\Controllers\Server\CompanyDetailController;
+use App\Http\Controllers\Server\AboutCompanyController;
+use App\Http\Controllers\Server\TeamMemberController;
+use App\Http\Controllers\Server\GalleryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,9 +42,10 @@ Route::prefix('/')->group(function(){
         Route::resource('review', ReviewController::class);
         Route::resource('counter', CounterController::class);
         Route::resource('company-details', CompanyDetailController::class);
-        // Route::resource('grade', GradeController::class);
+        Route::resource('about-company', AboutCompanyController::class);
+        Route::resource('team-member', TeamMemberController::class);
+        Route::resource('gallery', GalleryController::class);
 
-        // Route::resource('employee-list', EmployeeListController::class);
         // Route::resource('leave-holidays', HolidaysController::class);
         // Route::get('leave-holidays-year', [HolidaysController::class,'year'])->name('leave-holidays.year');
         // Route::resource('leave-type', LeaveController::class);
