@@ -40,7 +40,7 @@ class BannerController extends Controller
         $banner = new Banner();
         $banner->first_text = $request->first_text;
         $banner->second_text = $request->second_text;
-        
+
         //dd($request->file('brand_image'));
         //dd($request->hasFile('brand_image'));
         if($request->hasFile('image')){
@@ -56,7 +56,7 @@ class BannerController extends Controller
             }
         }
 
-        
+
         $banner->save();
         return redirect(route('banner.index'))->with('success','New Banner Save Successfully!');
     }
