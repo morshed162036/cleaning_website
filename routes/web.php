@@ -14,6 +14,8 @@ use App\Http\Controllers\Server\TeamMemberController;
 use App\Http\Controllers\Server\GalleryController;
 use App\Http\Controllers\Server\AboutTabController;
 use App\Http\Controllers\Server\PricingPlaneController;
+use App\Http\Controllers\Server\Blog\BlogCategoryController;
+use App\Http\Controllers\Server\Blog\BlogPostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +54,9 @@ Route::prefix('/')->group(function(){
         Route::post('about-tab-status', [AboutTabController::class, 'updateTabstatus'])->name('updateTabstatus');
         Route::resource('package',PricingPlaneController::class);
         Route::post('package-status', [PricingPlaneController::class, 'packagestatus'])->name('packagestatus');
+        Route::resource('blog-category', BlogCategoryController::class);
+        Route::post('blog-status',[BlogCategoryController::class,'updateBlogCategoryStatus'])->name('updateBlogCategoryStatus');
+        Route::resource('blog-post', BlogPostController::class);
 
 
 

@@ -250,15 +250,6 @@
                         <li><a href="{{ route('service-detail.index') }}"><i class="bx bx-right-arrow-alt"></i><span
                                     class="menu-item" data-i18n="LivIcons">Service Details</span></a>
                         </li>
-                        {{-- <li><a href="{{ route('leave-application-online.index') }}"><i class="bx bx-right-arrow-alt"></i><span
-                                    class="menu-item" data-i18n="LivIcons">Online Application</span></a>
-                        </li>
-                        <li><a href="{{ route('leave-application.index') }}"><i class="bx bx-right-arrow-alt"></i><span
-                                    class="menu-item" data-i18n="LivIcons">Offline Application</span></a>
-                        </li>
-                        <li><a href="{{ route('leave-application-approval.index') }}"><i class="bx bx-right-arrow-alt"></i><span
-                                    class="menu-item" data-i18n="LivIcons">Approval</span></a>
-                        </li> --}}
                     </ul>
                 </li>
                  <li class=" nav-item"><a href="{{ route('about_tab.index') }}"><i class="bx bxs-categories"></i><span
@@ -285,6 +276,16 @@
                             class="menu-title">Gallery</span></a>
                 </li>
 
+                <li class=" nav-item"><a href="#"><i class="bx bx-group"></i><span class="menu-title">Blog Section</span></a>
+                    <ul class='menu-content'>
+                        <li><a href="{{ route('blog-category.index') }}"><i class="bx bx-right-arrow-alt"></i><span
+                                    class="menu-item" data-i18n="LivIcons">Category</span></a>
+                        </li>
+                        <li><a href="{{ route('blog-post.index') }}"><i class="bx bx-right-arrow-alt"></i><span
+                                    class="menu-item" data-i18n="LivIcons">Post</span></a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class=" navigation-header"><span>Settings</span>
                 </li>
