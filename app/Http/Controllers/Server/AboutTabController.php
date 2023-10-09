@@ -39,7 +39,6 @@ class AboutTabController extends Controller
        $about_tab->title = $request->title;
        $about_tab->order = $request->order;
        $about_tab->description = $request->description;
-       $about_tab->status = 1;
        $about_tab->save();
        return redirect(route('about_tab.index'))->with('success', "successfully create about tab!");
 
@@ -58,7 +57,8 @@ class AboutTabController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $about_tab = About_tab::where('id', $id)->first();
+        return view('server.about_tab.edit')->with(compact('about_tab'));
     }
 
     /**
@@ -66,7 +66,17 @@ class AboutTabController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $rules=[
+           'title' => 'required',
+        ];
+        $this->validate($request,$rules);
+
+        $about_tab = About_tab::findorFail($id);
+        $about_tab ->title = $request->title;
+        $about_tab ->order = $request->order;
+        $about_tab ->description = $request->description;
+        $about_tab->update();
+        return redirect(route('about_tab.index'))->with('success', "successfully update");
     }
 
     /**
@@ -74,6 +84,23 @@ class AboutTabController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $about_tab = About_tab::findOrFail($id);
+        $about_tab ->delete();
+        return redirect(route('about_tab.index'))->with('success', "successfully delete!");
+    }
+
+    public function updateTabstatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            // echo "<pre>"; print_r($data);die;
+            if ($data['status'] == 'Active') {
+                $status = 'Inactive';
+            } else {
+                $status = 'Active';
+            }
+            About_tab::where('id', $data['banner_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'banner_id' => $data['banner_id']]);
+        }
     }
 }

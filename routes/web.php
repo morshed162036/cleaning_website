@@ -48,6 +48,8 @@ Route::prefix('/')->group(function(){
         Route::resource('team-member', TeamMemberController::class);
         Route::resource('gallery', GalleryController::class);
         Route::resource('about_tab',AboutTabController::class);
+        Route::post('about-tab-status', [AboutTabController::class, 'updateTabstatus'])->name('updateTabstatus');
+
 
 
         // Route::resource('leave-holidays', HolidaysController::class);

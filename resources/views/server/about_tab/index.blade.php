@@ -77,6 +77,8 @@
                                             <tr>
                                                 <th>Title</th>
                                                 <th>Description</th>
+                                                <th>Order</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -84,15 +86,29 @@
                                             @if ( $about_tabs)
                                                 @foreach ( $about_tabs as  $about_tab)
                                                     <tr>
-                                                        <td class="text-bold-600" >{{  $about_tab->service->title }}</td>
+                                                        <td class="text-bold-600" >{{  $about_tab->title }}</td>
                                                         <td>{{  $about_tab->description }}</td>
+                                                        <td>{{  $about_tab->order}}</td>
+                                                        <td>   @if($about_tab->status == 'Active')
+                                                                <a class="updateTabstatus" id="banner-{{ $about_tab->id }}"
+                                                                    banner_id = "{{ $about_tab->id }}"
+                                                                    href="javascript:void(0)">
+                                                                        <label class="badge badge-success" status="Active">Active</label>
+                                                                </a>
+                                                            @else
+                                                                <a class="updateTabstatus" id="banner-{{ $about_tab->id }}"
+                                                                    banner_id = "{{ $about_tab->id }}"
+                                                                    href="javascript:void(0)">
+                                                                        <label class="badge badge-danger" status="Inactive">Inactive</label>
+                                                                </a>
+                                                            @endif</td>
 
                                                         <td>
                                                             <div class="dropdown">
                                                                 <span class="bx bx-dots-vertical-rounded font-medium-3 dropdown-toggle nav-hide-arrow cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu"></span>
                                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                                    <a class="dropdown-item" href="{{ route('service-detail.edit', $about_tab->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
-                                                                    <form action="{{ route('service-detail.destroy', $about_tab->id) }}" method="post"> @csrf @method('Delete')
+                                                                    <a class="dropdown-item" href="{{ route('about_tab.edit', $about_tab->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
+                                                                    <form action="{{ route('about_tab.destroy', $about_tab->id) }}" method="post"> @csrf @method('Delete')
                                                                         <button type="submit" class="dropdown-item"><i class="bx bx-trash mr-1"></i> delete</button>
                                                                     </form>
 
@@ -109,6 +125,8 @@
                                             <tr>
                                                 <th>Image</th>
                                                 <th>Description</th>
+                                                 <th>Order</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
@@ -155,5 +173,102 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('admin_template/app-assets/js/scripts/datatables/datatable.js') }}"></script>
     <!-- END: Page JS-->
+      <script>
+
+        $(document).ready(function (){
+            $(document).on("click", ".updateTabstatus", function () {
+                var status = $(this).children("label").attr("status");
+                var banner_id = $(this).attr("banner_id");
+
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    type: "post",
+                    url: "{{ route('updateTabstatus') }}",
+                    data: { status: status, banner_id: banner_id },
+                    success: function (resp) {
+                        if (resp["status"] == 'Inactive') {
+                            $("#banner-" + banner_id).html(
+                                "<label class='badge badge-danger' status='Inactive'>Inactive</label>"
+                            );
+                        } else if (resp["status"] == 'Active') {
+                            $("#banner-" + banner_id).html(
+                                "<label class='badge badge-success' status='Active'>Active</label>"
+                            );
+                        }
+                    },
+                    error: function () {
+                        alert("Error");
+                    },
+                });
+            });
+        })
+
+    </script><script>
+
+        $(document).ready(function (){
+            $(document).on("click", ".updateTabstatus", function () {
+                var status = $(this).children("label").attr("status");
+                var id = $(this).attr("id");
+
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    type: "post",
+                    url: "{{ route('updateTabstatus') }}",
+                    data: { status: status, id: id },
+                    success: function (resp) {
+                        if (resp["status"] == 'Inactive') {
+                            $("#about_tab-" + id).html(
+                                "<label class='badge badge-danger' status='Inactive'>Inactive</label>"
+                            );
+                        } else if (resp["status"] == 'Active') {
+                            $("#about_tab-" + id).html(
+                                "<label class='badge badge-success' status='Active'>Active</label>"
+                            );
+                        }
+                    },
+                    error: function () {
+                        alert("Error");
+                    },
+                });
+            });
+        })
+
+    </script> <script>
+
+        $(document).ready(function (){
+            $(document).on("click", ".updateBannerStatus", function () {
+                var status = $(this).children("label").attr("status");
+                var banner_id = $(this).attr("banner_id");
+
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    type: "post",
+                    url: "{{ route('updateBannerStatus') }}",
+                    data: { status: status, banner_id: banner_id },
+                    success: function (resp) {
+                        if (resp["status"] == 'Inactive') {
+                            $("#banner-" + banner_id).html(
+                                "<label class='badge badge-danger' status='Inactive'>Inactive</label>"
+                            );
+                        } else if (resp["status"] == 'Active') {
+                            $("#banner-" + banner_id).html(
+                                "<label class='badge badge-success' status='Active'>Active</label>"
+                            );
+                        }
+                    },
+                    error: function () {
+                        alert("Error");
+                    },
+                });
+            });
+        })
+
+    </script>
 @endsection
 
