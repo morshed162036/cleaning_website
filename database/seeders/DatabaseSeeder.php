@@ -28,9 +28,11 @@ class DatabaseSeeder extends Seeder
         $this->call([AboutCompanySeeder::class]);
         $this->call([TeamMemberSeeder::class]);
         $this->call([GallerySeeder::class]);
+        $this->call([ContactSeeder::class]);
         $this->call([About_TabSeeder::class]);
         $this->call([pricingPlaneSeeder::class]);
         $this->call([BlogCategorySeeder::class]);
         $this->call([BlogPostSeeder::class]);
+
     }
 }

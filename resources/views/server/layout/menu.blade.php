@@ -276,6 +276,15 @@
                             class="menu-title">Gallery</span></a>
                 </li>
 
+
+                <!-- Contact Page -->
+                <li class=" navigation-header"><span>Contact page</span>
+                </li>
+                <li class=" nav-item"><a href="{{ route('contact.index') }}"><i class="bx bxl-slack"></i><span
+                            class="menu-title">Contact</span></a>
+                </li>
+
+
                 <li class=" nav-item"><a href="#"><i class="bx bx-group"></i><span class="menu-title">Blog Section</span></a>
                     <ul class='menu-content'>
                         <li><a href="{{ route('blog-category.index') }}"><i class="bx bx-right-arrow-alt"></i><span
@@ -286,6 +295,7 @@
                         </li>
                     </ul>
                 </li>
+
 
                 <li class=" navigation-header"><span>Settings</span>
                 </li>

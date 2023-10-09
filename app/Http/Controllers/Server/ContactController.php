@@ -3,17 +3,20 @@
 namespace App\Http\Controllers\Server;
 
 use App\Http\Controllers\Controller;
+// use App\Http\Controllers\Server\ContactController;
 use Illuminate\Http\Request;
-use App\Models\Server\About_company;
-class AboutCompanyController extends Controller 
+use App\Models\Contact;
+
+
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $about = About_company::get()->first();
-        return view('server.about_company.index')->with(compact('about'));
+        $contacts = Contact::get()->all();
+        return view('server.contact.index')->with(compact('contacts'));   
     }
 
     /**
@@ -45,8 +48,7 @@ class AboutCompanyController extends Controller
      */
     public function edit(string $id)
     {
-        $about = About_company::get()->first();
-        return view('server.about_company.edit')->with(compact('about'));
+        //
     }
 
     /**
@@ -55,21 +57,20 @@ class AboutCompanyController extends Controller
     public function update(Request $request, string $id)
     {
         $rules = [
-            'title'=>'required',
-            'pera_1'=>'required',
-            'our_mission'=>'required',
-            'our_vision'=>'required',
-            ];
+            'name' => 'required',
+            'number' => 'required',
+            'message' => 'required'
+        ];
         $this->validate($request,$rules);
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->number = $request->number;
+        $contact->email = $request->email;
+        $contact->message = $request->message;
 
-        $about = About_company::findorFail($id);
-        $about->title = $request->title;
-        $about->pera_1 = $request->pera_1;
-        $about->pera_2 = $request->pera_2;
-        $about->our_mission = $request->our_mission;
-        $about->our_vision = $request->our_vision;
-        $about->save();
-        return redirect(route('about-company.index'))->with('success','About Company Update Successfully!');
+        $contact->save();
+        return redirect(route('contact.index'))->with('success','New Contact Information Save Successfully!');
+
     }
 
     /**
@@ -77,6 +78,8 @@ class AboutCompanyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+         $contact = Contact::findorFail($id);
+         $contact->delete();
+        return redirect(route('contact.index'))->with('success','Contact Information Delete Successfully!');
     }
 }
