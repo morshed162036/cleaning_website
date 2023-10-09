@@ -5,8 +5,7 @@ namespace App\Models\Server;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class About_company extends Model
+class PricingPlane extends Model
 {
     use HasFactory;
-    protected $fillable= ['title','order','description'];
 }

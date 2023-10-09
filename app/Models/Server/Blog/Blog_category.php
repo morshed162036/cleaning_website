@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Models\Server;
+namespace App\Models\Server\Blog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class About_company extends Model
+class Blog_category extends Model
 {
     use HasFactory;
-    protected $fillable= ['title','order','description'];
 }

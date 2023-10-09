@@ -38,14 +38,14 @@
     <div class="content-header-left col-12 mb-2 mt-1">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h5 class="content-header-title float-left pr-1 mb-0">Service Details Edit</h5>
+                <h5 class="content-header-title float-left pr-1 mb-0">About Tab Edit</h5>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb p-0 mb-0">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{ route('service-detail.index') }}">Services</a>
+                        <li class="breadcrumb-item"><a href="{{ route('about_tab.index') }}">About Tab</a>
                         </li>
-                        <li class="breadcrumb-item active">Service Detail Edit
+                        <li class="breadcrumb-item active">About TAb Edit
                         </li>
                     </ol>
                 </div>
@@ -71,56 +71,32 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-content">
-                        <form action="{{ route('service-detail.update',$detail->id) }}" method="post" enctype="multipart/form-data"> @csrf @method('put')
+                        <form action="{{ route('about_tab.update',$about_tab->id) }}" method="post" enctype="multipart/form-data"> @csrf @method('put')
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-10">
-                                        <fieldset>
-                                            <h5>Image <span class="star">*</span></h5>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-Createon1"><i class="bx bx-file"></i></span>
-                                                </div>
-                                                <input type="file" class="form-control" aria-describedby="basic-Createon1" name="image" onchange="loadFile(event)">
-                                            </div>
-                                        </fieldset>
-
-                                        @if($detail->image != null)
-                                        <img src="{{ asset('images/service/'.$detail->image) }}" id="output" alt="logo" width="400px" height="200px" class="mt-2 mx-1">
-                                        @endif
-
+                                   <div class="col-md-10">
                                         <fieldset class="mt-2">
-                                            <h5>Service <span class="star">*</span></h5>
+                                            <h5>Title <span class="star">*</span></h5>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-Createon1"><i class="bx bx-spreadsheet"></i></span>
                                                 </div>
-                                               <input type="text" class="form-control" value="{{ $detail->service->title }}" readonly>
+                                                <input type="text" name="title" class="form-control" required value="{{ $about_tab->title }}">
                                             </div>
                                         </fieldset>
                                         <fieldset class="mt-2">
-                                            <h5>Change Service <span class="star">*</span></h5>
+                                            <h5>order</h5>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-Createon1"><i class="bx bx-spreadsheet"></i></span>
                                                 </div>
-                                               <select name="service_id" id="" class="form-control">
-                                                    <option value="">Select</option>
-                                                    @foreach ($services as $service )
-                                                        <option value="{{ $service->id }}">{{ $service->title }}</option>
-                                                    @endforeach
-                                               </select>
+                                                <input type="text" name="order" class="form-control" value="{{ $about_tab->order }}">
                                             </div>
                                         </fieldset>
                                         <fieldset class="mt-2">
-                                            <h5>Description <span class="star">*</span></h5>
-                                            <textarea name="description" id="description" required>{{ $detail->description }}</textarea>
+                                            <h5>Description</h5>
+                                            <textarea name="description" id="description">{{ $about_tab->description }}</textarea>
                                         </fieldset>
-                                        <fieldset class="mt-2">
-                                            <h5>Our Plan <span class="star">*</span></h5>
-                                            <textarea name="our_plan" id="our_plan" required>{{ $detail->our_plan }}</textarea>
-                                        </fieldset>
-
                                         <button type="submit" class="btn btn-primary mt-2 btn-lg mx-1">Update</button>
                                     </div>
                                 </div>
