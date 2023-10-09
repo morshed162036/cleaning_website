@@ -89,7 +89,19 @@
                                                         <td class="text-bold-600" >{{  $about_tab->title }}</td>
                                                         <td>{{  $about_tab->description }}</td>
                                                         <td>{{  $about_tab->order}}</td>
-                                                        <td>{{  $about_tab->status }}</td>
+                                                        <td>   @if($about_tab->status == 'Active')
+                                                                <a class="updateTabstatus" id="banner-{{ $about_tab->id }}"
+                                                                    banner_id = "{{ $about_tab->id }}"
+                                                                    href="javascript:void(0)">
+                                                                        <label class="badge badge-success" status="Active">Active</label>
+                                                                </a>
+                                                            @else
+                                                                <a class="updateTabstatus" id="banner-{{ $about_tab->id }}"
+                                                                    banner_id = "{{ $about_tab->id }}"
+                                                                    href="javascript:void(0)">
+                                                                        <label class="badge badge-danger" status="Inactive">Inactive</label>
+                                                                </a>
+                                                            @endif</td>
 
                                                         <td>
                                                             <div class="dropdown">
@@ -161,5 +173,102 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('admin_template/app-assets/js/scripts/datatables/datatable.js') }}"></script>
     <!-- END: Page JS-->
+      <script>
+
+        $(document).ready(function (){
+            $(document).on("click", ".updateTabstatus", function () {
+                var status = $(this).children("label").attr("status");
+                var banner_id = $(this).attr("banner_id");
+
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    type: "post",
+                    url: "{{ route('updateTabstatus') }}",
+                    data: { status: status, banner_id: banner_id },
+                    success: function (resp) {
+                        if (resp["status"] == 'Inactive') {
+                            $("#banner-" + banner_id).html(
+                                "<label class='badge badge-danger' status='Inactive'>Inactive</label>"
+                            );
+                        } else if (resp["status"] == 'Active') {
+                            $("#banner-" + banner_id).html(
+                                "<label class='badge badge-success' status='Active'>Active</label>"
+                            );
+                        }
+                    },
+                    error: function () {
+                        alert("Error");
+                    },
+                });
+            });
+        })
+
+    </script><script>
+
+        $(document).ready(function (){
+            $(document).on("click", ".updateTabstatus", function () {
+                var status = $(this).children("label").attr("status");
+                var id = $(this).attr("id");
+
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    type: "post",
+                    url: "{{ route('updateTabstatus') }}",
+                    data: { status: status, id: id },
+                    success: function (resp) {
+                        if (resp["status"] == 'Inactive') {
+                            $("#about_tab-" + id).html(
+                                "<label class='badge badge-danger' status='Inactive'>Inactive</label>"
+                            );
+                        } else if (resp["status"] == 'Active') {
+                            $("#about_tab-" + id).html(
+                                "<label class='badge badge-success' status='Active'>Active</label>"
+                            );
+                        }
+                    },
+                    error: function () {
+                        alert("Error");
+                    },
+                });
+            });
+        })
+
+    </script> <script>
+
+        $(document).ready(function (){
+            $(document).on("click", ".updateBannerStatus", function () {
+                var status = $(this).children("label").attr("status");
+                var banner_id = $(this).attr("banner_id");
+
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    type: "post",
+                    url: "{{ route('updateBannerStatus') }}",
+                    data: { status: status, banner_id: banner_id },
+                    success: function (resp) {
+                        if (resp["status"] == 'Inactive') {
+                            $("#banner-" + banner_id).html(
+                                "<label class='badge badge-danger' status='Inactive'>Inactive</label>"
+                            );
+                        } else if (resp["status"] == 'Active') {
+                            $("#banner-" + banner_id).html(
+                                "<label class='badge badge-success' status='Active'>Active</label>"
+                            );
+                        }
+                    },
+                    error: function () {
+                        alert("Error");
+                    },
+                });
+            });
+        })
+
+    </script>
 @endsection
 

@@ -88,4 +88,19 @@ class AboutTabController extends Controller
         $about_tab ->delete();
         return redirect(route('about_tab.index'))->with('success', "successfully delete!");
     }
+
+    public function updateTabstatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            // echo "<pre>"; print_r($data);die;
+            if ($data['status'] == 'Active') {
+                $status = 'Inactive';
+            } else {
+                $status = 'Active';
+            }
+            About_tab::where('id', $data['banner_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'banner_id' => $data['banner_id']]);
+        }
+    }
 }
