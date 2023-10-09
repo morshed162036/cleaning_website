@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('pricing_planes', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('price');
+            $table->text('details');
+            $table->enum('status', ['Active', 'Inactive'])->default('Active');
             $table->timestamps();
         });
     }

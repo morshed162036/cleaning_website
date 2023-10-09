@@ -13,6 +13,7 @@ use App\Http\Controllers\Server\AboutCompanyController;
 use App\Http\Controllers\Server\TeamMemberController;
 use App\Http\Controllers\Server\GalleryController;
 use App\Http\Controllers\Server\AboutTabController;
+use App\Http\Controllers\Server\PricingPlaneController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +50,8 @@ Route::prefix('/')->group(function(){
         Route::resource('gallery', GalleryController::class);
         Route::resource('about_tab',AboutTabController::class);
         Route::post('about-tab-status', [AboutTabController::class, 'updateTabstatus'])->name('updateTabstatus');
+        Route::resource('package',PricingPlaneController::class);
+        Route::post('package-status', [PricingPlaneController::class, 'packagestatus'])->name('packagestatus');
 
 
 

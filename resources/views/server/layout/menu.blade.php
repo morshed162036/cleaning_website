@@ -264,7 +264,7 @@
                  <li class=" nav-item"><a href="{{ route('about_tab.index') }}"><i class="bx bxs-categories"></i><span
                             class="menu-title">About Tab</span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('about_tab.index') }}"><i class="bx bxs-categories"></i><span
+                <li class=" nav-item"><a href="{{ route('package.index') }}"><i class="bx bxs-categories"></i><span
                             class="menu-title">Pricing plan</span></a>
                 </li>
                  <li class=" nav-item"><a href="{{ route('review.index') }}"><i class="bx bxs-categories"></i><span

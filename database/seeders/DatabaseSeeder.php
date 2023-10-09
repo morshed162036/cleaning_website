@@ -28,5 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call([TeamMemberSeeder::class]);
         $this->call([GallerySeeder::class]);
         $this->call([About_TabSeeder::class]);
+        $this->call([pricingPlaneSeeder::class]);
     }
 }
