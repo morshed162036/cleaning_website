@@ -26,7 +26,7 @@
         a label{
             cursor: pointer;
         }
-    </style>
+    </style> 
 @endsection
 
 @section('content')
@@ -43,12 +43,12 @@
                                 </button>
                         </div>
                     @endif
-                    <h5 class="content-header-title float-left pr-1 mb-0">AboutTab page</h5>
+                    <h5 class="content-header-title float-left pr-1 mb-0">Blog Category Table</h5>
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb p-0 mb-0">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                             </li>
-                            <li class="breadcrumb-item active">Service Details
+                            <li class="breadcrumb-item active">Categories
                             </li>
                         </ol>
                     </div>
@@ -62,10 +62,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">About tab List List</h5>
+                            <h5 class="card-title">Category List</h5>
                             <div class="heading-elements">
                                 <ul class="list-inline mb-0">
-                                    <li class="ml-2"><a href="{{ route('about_tab.create') }}" class="btn btn-primary">+ Create</a></li>
+                                    <li class="ml-2"><a href="{{ route('blog-category.create') }}" class="btn btn-primary">+ Create</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -77,45 +77,48 @@
                                             <tr>
                                                 <th>Title</th>
                                                 <th>Description</th>
-                                                <th>Order</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if ( $about_tabs)
-                                                @foreach ( $about_tabs as  $about_tab)
+                                            @if ($categories)
+                                                @foreach ($categories as $category)
                                                     <tr>
-                                                        <td class="text-bold-600" >{{  $about_tab->title }}</td>
-                                                        <td>{{  $about_tab->description }}</td>
-                                                        <td>{{  $about_tab->order}}</td>
-                                                        <td>   @if($about_tab->status == 'Active')
-                                                                <a class="updateTabstatus" id="banner-{{ $about_tab->id }}"
-                                                                    banner_id = "{{ $about_tab->id }}"
+                                                        <td class="text-bold-600" >{{ $category->title }}</td>
+                                                        <td>@if ($category->description)
+                                                            {{ $category->description }}
+                                                            @else
+                                                            {{ 'Nothing To Describe' }}
+                                                        @endif</td>
+                                                        <td>
+                                                            @if($category->status == 'Active')
+                                                                <a class="updateBlogCategoryStatus" id="category-{{ $category->id }}"
+                                                                    category_id = "{{ $category->id }}"
                                                                     href="javascript:void(0)">
                                                                         <label class="badge badge-success" status="Active">Active</label>
                                                                 </a>
                                                             @else
-                                                                <a class="updateTabstatus" id="banner-{{ $about_tab->id }}"
-                                                                    banner_id = "{{ $about_tab->id }}"
+                                                                <a class="updateBlogCategoryStatus" id="category-{{ $category->id }}"
+                                                                    category_id = "{{ $category->id }}"
                                                                     href="javascript:void(0)">
                                                                         <label class="badge badge-danger" status="Inactive">Inactive</label>
                                                                 </a>
-                                                            @endif</td>
-
+                                                            @endif
+                                                        </td>
                                                         <td>
                                                             <div class="dropdown">
                                                                 <span class="bx bx-dots-vertical-rounded font-medium-3 dropdown-toggle nav-hide-arrow cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu"></span>
                                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                                    <a class="dropdown-item" href="{{ route('about_tab.edit', $about_tab->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
-                                                                    <form action="{{ route('about_tab.destroy', $about_tab->id) }}" method="post"> @csrf @method('Delete')
+                                                                    <a class="dropdown-item" href="{{ route('blog-category.edit',$category->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
+                                                                    <form action="{{ route('blog-category.destroy',$category->id) }}" method="post"> @csrf @method('Delete')
                                                                         <button type="submit" class="dropdown-item"><i class="bx bx-trash mr-1"></i> delete</button>
                                                                     </form>
-
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                    </tr>
+                                                    </tr>   
                                                 @endforeach
                                             @else
                                                 {{ 'No Data Found' }}
@@ -123,9 +126,8 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Image</th>
+                                                <th>Title</th>
                                                 <th>Description</th>
-                                                 <th>Order</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -144,7 +146,7 @@
 
 @section('js')
 
-
+    
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('admin_template/app-assets/vendors/js/vendors.min.js') }}"></script>
     <script src="{{ asset('admin_template/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.tools.js') }}"></script>
@@ -173,27 +175,27 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('admin_template/app-assets/js/scripts/datatables/datatable.js') }}"></script>
     <!-- END: Page JS-->
-      <script>
+    <script>
 
         $(document).ready(function (){
-            $(document).on("click", ".updateTabstatus", function () {
+            $(document).on("click", ".updateBlogCategoryStatus", function () {
                 var status = $(this).children("label").attr("status");
-                var banner_id = $(this).attr("banner_id");
+                var category_id = $(this).attr("category_id");
 
                 $.ajax({
                     headers: {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                     },
                     type: "post",
-                    url: "{{ route('updateTabstatus') }}",
-                    data: { status: status, banner_id: banner_id },
+                    url: "{{ route('updateBlogCategoryStatus') }}",
+                    data: { status: status, category_id: category_id },
                     success: function (resp) {
                         if (resp["status"] == 'Inactive') {
-                            $("#banner-" + banner_id).html(
+                            $("#category-" + category_id).html(
                                 "<label class='badge badge-danger' status='Inactive'>Inactive</label>"
                             );
                         } else if (resp["status"] == 'Active') {
-                            $("#banner-" + banner_id).html(
+                            $("#category-" + category_id).html(
                                 "<label class='badge badge-success' status='Active'>Active</label>"
                             );
                         }
@@ -204,7 +206,7 @@
                 });
             });
         })
-
+        
     </script>
 @endsection
 
