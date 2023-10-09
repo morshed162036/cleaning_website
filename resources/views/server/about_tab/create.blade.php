@@ -90,15 +90,9 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-Createon1"><i class="bx bx-spreadsheet"></i></span>
                                                 </div>
-                                                <input type="number" name="order" class="form-control">
+                                                <input type="text" name="order" class="form-control">
                                             </div>
                                         </fieldset>
-                                        {{--  <fieldset class="mt-2 ml-2">
-                                          <div class="form-check form-switch">
-                                     <input class="form-check-input " id="flexSwitchCheckDefault" name="status" type="checkbox"/>
-                                       <label class="form-check-label" for="flexSwitchCheckDefault"> status</label>
-                                  </div>
-                                </fieldset>  --}}
                                         <fieldset class="mt-2">
                                             <h5>Description</h5>
                                             <textarea name="description" id="description"></textarea>

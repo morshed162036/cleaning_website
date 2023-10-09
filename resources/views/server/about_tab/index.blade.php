@@ -77,6 +77,8 @@
                                             <tr>
                                                 <th>Title</th>
                                                 <th>Description</th>
+                                                <th>Order</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -84,15 +86,17 @@
                                             @if ( $about_tabs)
                                                 @foreach ( $about_tabs as  $about_tab)
                                                     <tr>
-                                                        <td class="text-bold-600" >{{  $about_tab->service->title }}</td>
+                                                        <td class="text-bold-600" >{{  $about_tab->title }}</td>
                                                         <td>{{  $about_tab->description }}</td>
+                                                        <td>{{  $about_tab->order}}</td>
+                                                        <td>{{  $about_tab->status }}</td>
 
                                                         <td>
                                                             <div class="dropdown">
                                                                 <span class="bx bx-dots-vertical-rounded font-medium-3 dropdown-toggle nav-hide-arrow cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu"></span>
                                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                                    <a class="dropdown-item" href="{{ route('service-detail.edit', $about_tab->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
-                                                                    <form action="{{ route('service-detail.destroy', $about_tab->id) }}" method="post"> @csrf @method('Delete')
+                                                                    <a class="dropdown-item" href="{{ route('about_tab.edit', $about_tab->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
+                                                                    <form action="{{ route('about_tab.destroy', $about_tab->id) }}" method="post"> @csrf @method('Delete')
                                                                         <button type="submit" class="dropdown-item"><i class="bx bx-trash mr-1"></i> delete</button>
                                                                     </form>
 
@@ -109,6 +113,8 @@
                                             <tr>
                                                 <th>Image</th>
                                                 <th>Description</th>
+                                                 <th>Order</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>

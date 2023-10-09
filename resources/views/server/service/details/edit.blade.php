@@ -120,7 +120,7 @@
                                             <h5>Our Plan <span class="star">*</span></h5>
                                             <textarea name="our_plan" id="our_plan" required>{{ $detail->our_plan }}</textarea>
                                         </fieldset>
-                                        
+
                                         <button type="submit" class="btn btn-primary mt-2 btn-lg mx-1">Update</button>
                                     </div>
                                 </div>
