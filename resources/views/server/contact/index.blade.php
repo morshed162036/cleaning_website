@@ -32,7 +32,6 @@
 @section('content')
 
     <div class="content-header row">
-        
         <div class="content-header-left col-12 mb-2 mt-1">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
@@ -44,12 +43,12 @@
                                 </button>
                         </div>
                     @endif
-                    <h5 class="content-header-title float-left pr-1 mb-0">About Company</h5>
+                    <h5 class="content-header-title float-left pr-1 mb-0">contact Table</h5>
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb p-0 mb-0">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                             </li>
-                            <li class="breadcrumb-item active">About Company Settings
+                            <li class="breadcrumb-item active">contacts
                             </li>
                         </ol>
                     </div>
@@ -63,10 +62,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">About Page</h5>
+                            <h5 class="card-title">contact List</h5>
                             {{-- <div class="heading-elements">
                                 <ul class="list-inline mb-0">
-                                    <li class="ml-2"><a href="{{ route('review.create') }}" class="btn btn-primary">+ Create</a></li>
+                                    <li class="ml-2"><a href="{{ route('contact.create') }}" class="btn btn-primary">+ Create</a></li>
                                 </ul>
                             </div> --}}
                         </div>
@@ -76,47 +75,49 @@
                                     <table class="table zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th>Title</th>
-                                                <th>Peragraph 1</th>
-                                                <th>Peragraph 1</th>
-                                                <th>Our Mission</th>
-                                                <th>Our Vision</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Message</th>
+                                                <th>Map</th>                                                                                          
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if ($about)
+                                            @if ($contacts)
+                                            @foreach ($contacts as $contact)
                                                     <tr>
-                                                        <td class="text-bold-600">{{ $about->title }}</td>
-                                                        <td>{{ $about->pera_1 }}</td>
-                                                        <td>{{ $about->pera_2 }}</td>
-                                                        <td>{{ $about->our_mission }}</td>
-                                                        <td>{{ $about->our_vision }}</td>
-                                                        
-                                                        <td>
+                                                        <td>{{ $contact->name }}</td>
+                                                        <td>{{ $contact->email }}</td>
+                                                        <td>{{ $contact->phone }}</td>
+                                                        <td>{{ $contact->message}}</td>
+                                                        <td>{{ $contact->map}}</td>
+
+                                                         <td>
                                                             <div class="dropdown">
                                                                 <span class="bx bx-dots-vertical-rounded font-medium-3 dropdown-toggle nav-hide-arrow cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu"></span>
                                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                                    <a class="dropdown-item" href="{{ route('about-company.edit',$about->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
-                                                                    {{-- <form action="{{ route('company-details.destroy',$detail->id) }}" method="post"> @csrf @method('Delete')
+                                                                    <form action="{{ route('contact.destroy',$contact->id) }}" method="post"> @csrf @method('Delete')
                                                                         <button type="submit" class="dropdown-item"><i class="bx bx-trash mr-1"></i> delete</button>
-                                                                    </form> --}}
+                                                                    </form>
                                                                     
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                    </tr>   
+                                                        </td>
+                                                    </tr>  
+                                            @endforeach 
                                             @else
                                                 {{ 'No Data Found' }}
                                             @endif
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Title</th>
-                                                <th>Peragraph 1</th>
-                                                <th>Peragraph 1</th>
-                                                <th>Our Mission</th>
-                                                <th>Our Vision</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Message</th>
+                                                <th>Map</th>                                                                                      
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
@@ -163,5 +164,37 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('admin_template/app-assets/js/scripts/datatables/datatable.js') }}"></script>
     <!-- END: Page JS-->
+    <script>
+
+        $(document).ready(function (){
+            $(document).on("click", ".updatecontactStatus", function () {
+                var status = $(this).children("label").attr("status");
+                var contact_id = $(this).attr("contact_id");
+
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    type: "post",
+                    data: { status: status, contact_id: contact_id },
+                    success: function (resp) {
+                        if (resp["status"] == 'Inactive') {
+                            $("#contact-" + contact_id).html(
+                                "<label class='badge badge-danger' status='Inactive'>Inactive</label>"
+                            );
+                        } else if (resp["status"] == 'Active') {
+                            $("#contact-" + contact_id).html(
+                                "<label class='badge badge-success' status='Active'>Active</label>"
+                            );
+                        }
+                    },
+                    error: function () {
+                        alert("Error");
+                    },
+                });
+            });
+        })
+        
+    </script>
 @endsection
 

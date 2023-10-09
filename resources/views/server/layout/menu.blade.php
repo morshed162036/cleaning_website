@@ -279,6 +279,13 @@
                             class="menu-title">Gallery</span></a>
                 </li>
 
+                <!-- Contact Page -->
+                <li class=" navigation-header"><span>Contact page</span>
+                </li>
+                <li class=" nav-item"><a href="{{ route('contact.index') }}"><i class="bx bxl-slack"></i><span
+                            class="menu-title">Contact</span></a>
+                </li>
+
 
                 <li class=" navigation-header"><span>Settings</span>
                 </li>

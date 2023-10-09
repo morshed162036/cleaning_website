@@ -11,6 +11,7 @@ use App\Http\Controllers\Server\CompanyDetailController;
 use App\Http\Controllers\Server\AboutCompanyController;
 use App\Http\Controllers\Server\TeamMemberController;
 use App\Http\Controllers\Server\GalleryController;
+use App\Http\Controllers\Server\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +46,8 @@ Route::prefix('/')->group(function(){
         Route::resource('about-company', AboutCompanyController::class);
         Route::resource('team-member', TeamMemberController::class);
         Route::resource('gallery', GalleryController::class);
+        Route::resource('contact', ContactController::class);
+
 
         // Route::resource('leave-holidays', HolidaysController::class);
         // Route::get('leave-holidays-year', [HolidaysController::class,'year'])->name('leave-holidays.year');
