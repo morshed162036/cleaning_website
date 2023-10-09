@@ -18,17 +18,19 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        // $this->call(SuperAdminSeeder::class);
-        // $this->call(BannerSeeder::class);
-        // $this->call([ServiceSeeder::class,ServiceDetailsSeeder::class]);
-        // $this->call([ReviewSeeder::class]);
-        // $this->call([CounterSeeder::class]);
-        // $this->call([CompanyDetailsSeeder::class]);
-        // $this->call([AboutCompanySeeder::class]);
-        // $this->call([TeamMemberSeeder::class]);
-        // $this->call([GallerySeeder::class]);
-        //$this->call([About_TabSeeder::class]);
-        //$this->call([BlogCategorySeeder::class]);
+
+        $this->call(SuperAdminSeeder::class);
+        $this->call(BannerSeeder::class);
+        $this->call([ServiceSeeder::class,ServiceDetailsSeeder::class]);
+        $this->call([ReviewSeeder::class]);
+        $this->call([CounterSeeder::class]);
+        $this->call([CompanyDetailsSeeder::class]);
+        $this->call([AboutCompanySeeder::class]);
+        $this->call([TeamMemberSeeder::class]);
+        $this->call([GallerySeeder::class]);
+        $this->call([About_TabSeeder::class]);
+        $this->call([pricingPlaneSeeder::class]);
+        $this->call([BlogCategorySeeder::class]);
         $this->call([BlogPostSeeder::class]);
     }
 }
