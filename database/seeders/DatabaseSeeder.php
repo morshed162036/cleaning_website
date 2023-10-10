@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
         $this->call(SuperAdminSeeder::class);
         $this->call(BannerSeeder::class);
         $this->call([ServiceSeeder::class,ServiceDetailsSeeder::class]);
@@ -28,7 +29,14 @@ class DatabaseSeeder extends Seeder
         $this->call([TeamMemberSeeder::class]);
         $this->call([GallerySeeder::class]);
         $this->call([ContactSeeder::class]);
+<<<<<<< HEAD
         // $this->call([OrderSeeder::class]);
+=======
+        $this->call([About_TabSeeder::class]);
+        $this->call([pricingPlaneSeeder::class]);
+        $this->call([BlogCategorySeeder::class]);
+        $this->call([BlogPostSeeder::class]);
+>>>>>>> dad991c8c71f6a9f1e53dbb4d54f66d3f14e7583
 
     }
 }

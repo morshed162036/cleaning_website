@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Serve\AboutTabController as ServeAboutTabController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Server\AdminController;
 use App\Http\Controllers\Server\BannerController;
@@ -11,7 +12,12 @@ use App\Http\Controllers\Server\CompanyDetailController;
 use App\Http\Controllers\Server\AboutCompanyController;
 use App\Http\Controllers\Server\TeamMemberController;
 use App\Http\Controllers\Server\GalleryController;
+use App\Http\Controllers\Server\AboutTabController;
+use App\Http\Controllers\Server\PricingPlaneController;
+use App\Http\Controllers\Server\Blog\BlogCategoryController;
+use App\Http\Controllers\Server\Blog\BlogPostController;
 use App\Http\Controllers\Server\ContactController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,7 +52,17 @@ Route::prefix('/')->group(function(){
         Route::resource('about-company', AboutCompanyController::class);
         Route::resource('team-member', TeamMemberController::class);
         Route::resource('gallery', GalleryController::class);
+        Route::resource('about_tab',AboutTabController::class);
+        Route::post('about-tab-status', [AboutTabController::class, 'updateTabstatus'])->name('updateTabstatus');
+        Route::resource('package',PricingPlaneController::class);
+        Route::post('package-status', [PricingPlaneController::class, 'packagestatus'])->name('packagestatus');
+        Route::resource('blog-category', BlogCategoryController::class);
+        Route::post('blog-status',[BlogCategoryController::class,'updateBlogCategoryStatus'])->name('updateBlogCategoryStatus');
+        Route::resource('blog-post', BlogPostController::class);
+      
         Route::resource('contact', ContactController::class);
+
+
 
 
         // Route::resource('leave-holidays', HolidaysController::class);
@@ -55,7 +71,7 @@ Route::prefix('/')->group(function(){
         // Route::resource('leave-application', LeaveApplicationController::class);
         // Route::resource('leave-application-online', LeaveApplicationOnlineController::class);
         // Route::resource('leave-application-approval', LeaveApplicationApprovalController::class);
-        
+
         // Route::match(['get','post'],'promotion/{slug}', [PromotionController::class,'create'])->name('promotion.create');
         // Route::match(['get','post'],'promotion-store/{slug}', [PromotionController::class,'store'])->name('promotion.store');
         // Route::match(['get','post'],'promotion-history', [PromotionController::class,'promotion_history'])->name('promotion.history');
