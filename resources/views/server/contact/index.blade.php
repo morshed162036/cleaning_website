@@ -78,8 +78,7 @@
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Phone</th>
-                                                <th>Message</th>
-                                                <th>Map</th>                                                                                          
+                                                <th>Message</th>                                                                                        
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -91,7 +90,7 @@
                                                         <td>{{ $contact->email }}</td>
                                                         <td>{{ $contact->phone }}</td>
                                                         <td>{{ $contact->message}}</td>
-                                                        <td>{{ $contact->map}}</td>
+                                                        <!-- <td>{{ $contact->map}}</td> -->
 
                                                          <td>
                                                             <div class="dropdown">
@@ -116,8 +115,7 @@
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Phone</th>
-                                                <th>Message</th>
-                                                <th>Map</th>                                                                                      
+                                                <th>Message</th>                                                                                    
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
