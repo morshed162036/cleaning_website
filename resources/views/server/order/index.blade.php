@@ -26,13 +26,13 @@
         a label{
             cursor: pointer;
         }
-    </style> 
+    </style>
 @endsection
 
 @section('content')
 
     <div class="content-header row">
-        
+
         <div class="content-header-left col-12 mb-2 mt-1">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
@@ -90,25 +90,26 @@
                                             @if ($orders)
                                                @foreach($orders as $order)
                                                     <tr>
-                                                        <td class="text-bold-600">{{ $order->service_id }}</td>
-                                                        <td>{{ $order->pera_1 }}</td>
-                                                        <td>{{ $order->pera_2 }}</td>
-                                                        <td>{{ $order->our_mission }}</td>
-                                                        <td>{{ $order->our_vision }}</td>
-                                                        
+                                                        <td class="text-bold-600">{{ $order->service_id}}</td>
+                                                        <td>{{ $order->name }}</td>
+                                                        <td>{{ $order->Phone }}</td>
+                                                        <td>{{ $order->address }}</td>
+                                                        <td>{{ $order->date }}</td>
+                                                        <td>{{ $order->description }}</td>
+                                                        <td>{{ $order->status }}</td>
                                                         <td>
                                                             <div class="dropdown">
                                                                 <span class="bx bx-dots-vertical-rounded font-medium-3 dropdown-toggle nav-hide-arrow cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu"></span>
                                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                                    <a class="dropdown-item" href="{{ route('about-company.edit',$order->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
-                                                                    <form action="{{ route('company-details.destroy',$order->id) }}" method="post"> @csrf @method('Delete')
+                                                                    <a class="dropdown-item" href="{{ route('order.edit',$order->id) }}"><i class="bx bx-edit-alt mr-1"></i> edit</a>
+                                                                    <form action="{{ route('order.destroy',$order->id) }}" method="post"> @csrf @method('Delete')
                                                                         <button type="submit" class="dropdown-item"><i class="bx bx-trash mr-1"></i> delete</button>
                                                                     </form>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                    </tr>   
+                                                    </tr>
                                                @endforeach
                                             @else
                                                 {{ 'No Data Found' }}
@@ -140,7 +141,7 @@
 
 @section('js')
 
-    
+
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('admin_template/app-assets/vendors/js/vendors.min.js') }}"></script>
     <script src="{{ asset('admin_template/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.tools.js') }}"></script>
