@@ -275,7 +275,11 @@
                  <li class=" nav-item"><a href="{{ route('gallery.index') }}"><i class="bx bxs-categories"></i><span
                             class="menu-title">Gallery</span></a>
                 </li>
-
+                  {{--  order page  --}}
+                   <li class=" navigation-header"><span>Order page</span>
+                    <li class=" nav-item"><a href="{{ route('order.index') }}"><i class="bx bxl-slack"></i><span
+                            class="menu-title">Order</span></a>
+                </li>
 
                 <!-- Contact Page -->
                 <li class=" navigation-header"><span>Contact page</span>

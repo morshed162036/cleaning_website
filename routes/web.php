@@ -17,6 +17,7 @@ use App\Http\Controllers\Server\PricingPlaneController;
 use App\Http\Controllers\Server\Blog\BlogCategoryController;
 use App\Http\Controllers\Server\Blog\BlogPostController;
 use App\Http\Controllers\Server\ContactController;
+use App\Http\Controllers\Server\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,8 +60,8 @@ Route::prefix('/')->group(function(){
         Route::resource('blog-category', BlogCategoryController::class);
         Route::post('blog-status',[BlogCategoryController::class,'updateBlogCategoryStatus'])->name('updateBlogCategoryStatus');
         Route::resource('blog-post', BlogPostController::class);
-      
         Route::resource('contact', ContactController::class);
+        Route::resource('order', OrderController::class);
 
 
 
