@@ -16,7 +16,7 @@ class ContactSeeder extends Seeder
         $contact = [
             [
                 'id' => 1, 'name' => 'alamin','email' => 'alamin017514@gmail.com', 'phone' => '01751492367',
-                 'message' => 'this is message', 'map' => 'this is map'
+                'message' => 'this is message'
 
             ]
             ];

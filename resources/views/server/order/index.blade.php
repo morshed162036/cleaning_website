@@ -76,11 +76,12 @@
                                     <table class="table zero-configuration">
                                         <thead>
                                             <tr>
-                                               <th>service category</th>
                                                 <th>Name</th>
                                                 <th>Phone</th>
                                                 <th>address</th>
                                                 <th>date</th>
+                                                <th>Service category</th>
+                                                <th>Pricing Plan</th>
                                                 <th>Service Descriptin</th>
                                                 <th>status</th>
                                                 <th>Action</th>
@@ -90,11 +91,12 @@
                                             @if ($orders)
                                                @foreach($orders as $order)
                                                     <tr>
-                                                        <td class="text-bold-600">{{ $order->service_id}}</td>
-                                                        <td>{{ $order->name }}</td>
-                                                        <td>{{ $order->Phone }}</td>
+                                                        <td class="text-bold-600">{{ $order->name }}</td>
+                                                        <td>{{ $order->phone }}</td>
                                                         <td>{{ $order->address }}</td>
                                                         <td>{{ $order->date }}</td>
+                                                        <td class="text-bold-600 text-primary">{{ $order->service->title}}</td>
+                                                        <td class="text-bold-600 text-primary">{{ $order->plan->title}}</td>
                                                         <td>{{ $order->description }}</td>
                                                         <td>{{ $order->status }}</td>
                                                         <td>
@@ -117,11 +119,12 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                               <th>service category</th>
                                                 <th>Name</th>
                                                 <th>Phone</th>
                                                 <th>address</th>
                                                 <th>date</th>
+                                                <th>Service category</th>
+                                                <th>Pricing Plan</th>
                                                 <th>Service Descriptin</th>
                                                 <th>status</th>
                                                 <th>Action</th>

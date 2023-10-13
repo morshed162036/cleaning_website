@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Server;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\Server\Order;
+use App\Models\Server\Service\Service;
+use App\Models\Server\Blog\Blog_category;
+use App\Models\Server\Blog\Blog_post;
 class AdminController extends Controller
 {
     /**
@@ -85,7 +89,13 @@ class AdminController extends Controller
         return redirect('login');
     }
     public function dashboard(){
-        return view('server.dashboard');
+        $new = Order::where('status','Create')->get()->count();
+        $complete = Order::where('status','Complete')->get()->count();
+        $pending = Order::where('status','Pending')->get()->count();
+        $service = Service::get()->count();
+        $category = Blog_category::get()->count();
+        $blog = Blog_post::get()->count();
+        return view('server.dashboard')->with(compact('new','complete','pending','service','category','blog'));
     }
 
 }

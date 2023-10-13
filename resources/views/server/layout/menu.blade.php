@@ -11,16 +11,16 @@
                                         class="ficon bx bx-menu"></i></a></li>
                         </ul>
                         <ul class="nav navbar-nav bookmark-icons">
-                            <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-email.html"
+                            <li class="nav-item d-none d-lg-block"><a class="nav-link" href=""
                                     data-toggle="tooltip" data-placement="top" title="Email"><i
                                         class="ficon bx bx-envelope"></i></a></li>
-                            <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-chat.html"
+                            <li class="nav-item d-none d-lg-block"><a class="nav-link" href=""
                                     data-toggle="tooltip" data-placement="top" title="Chat"><i
                                         class="ficon bx bx-chat"></i></a></li>
-                            <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-todo.html"
+                            <li class="nav-item d-none d-lg-block"><a class="nav-link" href=""
                                     data-toggle="tooltip" data-placement="top" title="Todo"><i
                                         class="ficon bx bx-check-circle"></i></a></li>
-                            <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-calendar.html"
+                            <li class="nav-item d-none d-lg-block"><a class="nav-link" href=""
                                     data-toggle="tooltip" data-placement="top" title="Calendar"><i
                                         class="ficon bx bx-calendar-alt"></i></a></li>
                         </ul>
@@ -55,7 +55,7 @@
                                     class="ficon bx bx-search"></i></a>
                             <div class="search-input">
                                 <div class="search-input-icon"><i class="bx bx-search primary"></i></div>
-                                <input class="input" type="text" placeholder="Explore Frest..." tabindex="-1"
+                                <input class="input" type="text" placeholder="Explore Us..." tabindex="-1"
                                     data-search="template-search">
                                 <div class="search-input-close"><i class="bx bx-x"></i></div>
                                 <ul class="search-list"></ul>
@@ -64,7 +64,7 @@
                         <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label"
                                 href="#" data-toggle="dropdown"><i
                                     class="ficon bx bx-bell bx-tada bx-flip-horizontal"></i><span
-                                    class="badge badge-pill badge-danger badge-up">5</span></a>
+                                    class="badge badge-pill badge-danger badge-up">0</span></a>
                             {{-- <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                                 <li class="dropdown-menu-header">
                                     <div class="dropdown-header px-1 py-75 d-flex justify-content-between"><span class="notification-title">7 new Notification</span><span class="text-bold-400 cursor-pointer">Mark all as read</span></div>
@@ -189,19 +189,16 @@
                                             {{ Auth::guard('web')->user()->designation->title }}
                                         @endif</span> --}}
                                 </div><span><img class="round"
-                                        src="@if(Auth::guard('web')->user()->profile_pic)
-                                        {{ asset('images/profile_image').'/'.Auth::guard('web')->user()->image }}
+                                        src="@if((Auth::guard('web')->user()->id == 2) && $company->favicon)
+                                        {{ asset('images/logo/'.$company->favicon)}}
+                                        @elseif (Auth::guard('web')->user()->id == 1)
+                                        {{ asset('admin_template/app-assets/images/ico/zariq_favicon.ico') }}
                                         @else
                                         {{ asset('admin_template/app-assets/images/portrait/small/avatar-s-11.jpg') }}
                                         @endif"
                                         alt="avatar" height="40" width="40"></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right pb-0"><a class="dropdown-item"
-                                    href=""><i class="bx bx-user mr-50"></i> Edit Profile</a><a
-                                    class="dropdown-item" href=""><i class="bx bx-envelope mr-50"></i> My
-                                    Inbox</a><a class="dropdown-item" href=""><i
-                                        class="bx bx-check-square mr-50"></i> Task</a><a class="dropdown-item"
-                                    href=""><i class="bx bx-message mr-50"></i> Chats</a>
+                            <div class="dropdown-menu dropdown-menu-right pb-0">
                                 <div class="dropdown-divider mb-0"></div><a class="dropdown-item"
                                     href="{{ route('logout') }}"><i class="bx bx-power-off mr-50"></i>
                                     Logout</a>
@@ -218,10 +215,10 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('dashboard') }}">
                         <div class="brand-logo">
                             <img class="logo" style="height: 40px; left:20px;"
-                                src="{{ asset('admin_template/app-assets/images/logo/logo.png')}}" />
+                                src="{{ asset('images/logo/'.$company->logo) }}" />
                             </div>
                         {{-- <h2 class="brand-text mb-0 ml-auto">Cleaning</h2> --}}
                     </a></li>
@@ -236,13 +233,17 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation"
                 data-icon-style="">
 
-                
+                <li class=" navigation-header"><span>Client View</span>
+                </li>
+                <li class=" nav-item"><a href="{{ route('client.home') }}"><i class="bx bx-globe"></i><span
+                            class="menu-title">Website</span></a>
+                </li>
                 <li class=" navigation-header"><span>Home Page</span>
                 </li>
-                <li class=" nav-item"><a href="{{ route('banner.index') }}"><i class="bx bxl-slack"></i><span
+                <li class=" nav-item"><a href="{{ route('banner.index') }}"><i class="bx bxs-map-alt"></i><span
                             class="menu-title">Home page Banner</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="bx bx-group"></i><span class="menu-title">Service Section</span></a>
+                <li class=" nav-item"><a href="#"><i class="bx bxs-cog"></i><span class="menu-title">Service Section</span></a>
                     <ul class='menu-content'>
                         <li><a href="{{ route('service.index') }}"><i class="bx bx-right-arrow-alt"></i><span
                                     class="menu-item" data-i18n="LivIcons">Service List</span></a>
@@ -255,29 +256,30 @@
                  <li class=" nav-item"><a href="{{ route('about_tab.index') }}"><i class="bx bxs-categories"></i><span
                             class="menu-title">About Tab</span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('package.index') }}"><i class="bx bxs-categories"></i><span
+                <li class=" nav-item"><a href="{{ route('package.index') }}"><i class="bx bx-money"></i><span
                             class="menu-title">Pricing plan</span></a>
                 </li>
-                 <li class=" nav-item"><a href="{{ route('review.index') }}"><i class="bx bxs-categories"></i><span
+                 <li class=" nav-item"><a href="{{ route('review.index') }}"><i class="bx 
+                    bxs-archive-in"></i><span
                             class="menu-title">Client Review</span></a>
                 </li>
-                 <li class=" nav-item"><a href="{{ route('counter.index') }}"><i class="bx bxs-categories"></i><span
+                 <li class=" nav-item"><a href="{{ route('counter.index') }}"><i class="bx bx-pulse"></i><span
                             class="menu-title">Counter</span></a>
                 </li>
 
                 <li class=" navigation-header"><span>About Page</span>
-                 <li class=" nav-item"><a href="{{ route('about-company.index') }}"><i class="bx bxs-categories"></i><span
+                 <li class=" nav-item"><a href="{{ route('about-company.index') }}"><i class="bx bxs-customize"></i><span
                             class="menu-title">About Company</span></a>
                 </li>
-                 <li class=" nav-item"><a href="{{ route('team-member.index') }}"><i class="bx bxs-categories"></i><span
+                 <li class=" nav-item"><a href="{{ route('team-member.index') }}"><i class="bx bx-group"></i><span
                             class="menu-title">Team Member</span></a>
                 </li>
-                 <li class=" nav-item"><a href="{{ route('gallery.index') }}"><i class="bx bxs-categories"></i><span
+                 <li class=" nav-item"><a href="{{ route('gallery.index') }}"><i class="bx bx-photo-album"></i><span
                             class="menu-title">Gallery</span></a>
                 </li>
                   {{--  order page  --}}
                    <li class=" navigation-header"><span>Order page</span>
-                    <li class=" nav-item"><a href="{{ route('order.index') }}"><i class="bx bxl-slack"></i><span
+                    <li class=" nav-item"><a href="{{ route('order.index') }}"><i class="bx bx-cart-alt"></i><span
                             class="menu-title">Order</span></a>
                 </li>
 
@@ -289,7 +291,7 @@
                 </li>
 
 
-                <li class=" nav-item"><a href="#"><i class="bx bx-group"></i><span class="menu-title">Blog Section</span></a>
+                <li class=" nav-item"><a href="#"><i class="bx bx-detail"></i><span class="menu-title">Blog Section</span></a>
                     <ul class='menu-content'>
                         <li><a href="{{ route('blog-category.index') }}"><i class="bx bx-right-arrow-alt"></i><span
                                     class="menu-item" data-i18n="LivIcons">Category</span></a>
@@ -303,7 +305,7 @@
 
                 <li class=" navigation-header"><span>Settings</span>
                 </li>
-                <li class=" nav-item"><a href="{{ route('company-details.index') }}"><i class="bx bxl-slack"></i><span
+                <li class=" nav-item"><a href="{{ route('company-details.index') }}"><i class="bx bx-badge"></i><span
                             class="menu-title">Basic Setting</span></a>
                 </li>
                 {{--<li class=" nav-item"><a href="product.index"><i class="bx bx-package"></i><span

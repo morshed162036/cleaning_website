@@ -195,6 +195,46 @@
                                     </div>
                                     <div class="col-md-10">
                                         <fieldset class="mt-2">
+                                            <h5>Current Status <span class="star">*</span></h5>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-Createon1"><i
+                                                            class="bx bx-spreadsheet"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" required value="{{ $order->status }}" readonly>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <fieldset class="mt-2">
+                                            <h5>Change Status <span class="star">*</span></h5>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-Createon1"><i
+                                                            class="bx bx-spreadsheet"></i></span>
+                                                </div>
+                                                <select class="form-control" name="status" id="">
+                                                    <option @if ($order->status == "Create")
+                                                        selected
+                                                    @endif value="Create">Create</option>
+                                                    <option @if ($order->status == "Ongoing")
+                                                        selected
+                                                    @endif value="Ongoing">Ongoing</option>
+                                                    <option @if ($order->status == "Complete")
+                                                        selected
+                                                    @endif value="Complete">Complete</option>
+                                                    <option @if ($order->status == "Cancel")
+                                                        selected
+                                                    @endif value="Cancel">Cancel</option>
+                                                    <option @if ($order->status == "Pending")
+                                                        selected
+                                                    @endif value="Pending">Pending</option>
+                                                </select>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <fieldset class="mt-2">
                                             <h5>service description <span class="star">*</span></h5>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">

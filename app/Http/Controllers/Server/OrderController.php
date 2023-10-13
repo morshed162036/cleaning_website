@@ -14,9 +14,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $services = Service::where('status', 'Empty')->get()->all();
-        $orders = Order::get()->all();
-        return view('server.order.index')->with(compact('orders', 'services'));
+        $orders = Order::with('service','plan')->get()->all();
+        //dd($orders);
+        return view('server.order.index')->with(compact('orders'));
     }
 
     /**
@@ -97,6 +97,7 @@ class OrderController extends Controller
         $order->start_time = $request->start_time;
         $order->end_time = $request->end_time;
         $order->description = $request->description;
+        $order->status = $request->status;
         $order->update();
         return redirect(route('order.index'))->with('success', 'Successfuly update');
 
