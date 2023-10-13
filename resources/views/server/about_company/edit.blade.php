@@ -36,7 +36,7 @@
                     <ol class="breadcrumb p-0 mb-0">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{ route('company-details.index') }}">About</a>
+                        <li class="breadcrumb-item"><a href="{{ route('about-company.index') }}">About</a>
                         </li>
                         <li class="breadcrumb-item active">About Company Edit
                         </li>

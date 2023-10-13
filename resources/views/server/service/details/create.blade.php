@@ -103,11 +103,11 @@
                                         </fieldset>
                                         <fieldset class="mt-2">
                                             <h5>Description <span class="star">*</span></h5>
-                                            <textarea name="description" id="description" required></textarea>
+                                            <textarea name="description" id="description"></textarea>
                                         </fieldset>
                                         <fieldset class="mt-2">
                                             <h5>Our Plan <span class="star">*</span></h5>
-                                            <textarea name="our_plan" id="our_plan" required></textarea>
+                                            <textarea name="our_plan" id="our_plan"></textarea>
                                         </fieldset>
                                         
                                         <button type="submit" class="btn btn-primary mt-2 btn-lg mx-1">Create</button>
