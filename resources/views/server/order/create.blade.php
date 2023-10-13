@@ -165,7 +165,7 @@
                                                     <span class="input-group-text" id="basic-Createon1"><i
                                                             class="bx bx-spreadsheet"></i></span>
                                                 </div>
-                                                <input type="text" name="remarks" class="form-control" required>
+                                                <input type="text" name="remarks" class="form-control">
                                             </div>
                                         </fieldset>
                                     </div>

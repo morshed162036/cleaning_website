@@ -18,7 +18,8 @@ class OrderSeeder extends Seeder
         $order = [
             [
                 'id' => 1,
-                "service_id" => 1,
+                'service_id' => 1,
+                'plan_id' => 1,
                 'name' => 'mehejabul',
                 'email' => 'mehejabul@gmail.com',
                 'phone' => '01714294499',

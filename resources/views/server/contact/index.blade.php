@@ -43,12 +43,12 @@
                                 </button>
                         </div>
                     @endif
-                    <h5 class="content-header-title float-left pr-1 mb-0">contact Table</h5>
+                    <h5 class="content-header-title float-left pr-1 mb-0">Client Message Table</h5>
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb p-0 mb-0">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                             </li>
-                            <li class="breadcrumb-item active">contacts
+                            <li class="breadcrumb-item active">Client Messages
                             </li>
                         </ol>
                     </div>
@@ -62,7 +62,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">contact List</h5>
+                            <h5 class="card-title">Client Message List</h5>
                             {{-- <div class="heading-elements">
                                 <ul class="list-inline mb-0">
                                     <li class="ml-2"><a href="{{ route('contact.create') }}" class="btn btn-primary">+ Create</a></li>
@@ -79,7 +79,6 @@
                                                 <th>Email</th>
                                                 <th>Phone</th>
                                                 <th>Message</th>
-                                                <th>Map</th>                                                                                          
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -91,7 +90,6 @@
                                                         <td>{{ $contact->email }}</td>
                                                         <td>{{ $contact->phone }}</td>
                                                         <td>{{ $contact->message}}</td>
-                                                        <td>{{ $contact->map}}</td>
 
                                                          <td>
                                                             <div class="dropdown">
@@ -117,7 +115,6 @@
                                                 <th>Email</th>
                                                 <th>Phone</th>
                                                 <th>Message</th>
-                                                <th>Map</th>                                                                                      
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>

@@ -38,14 +38,14 @@
     <div class="content-header-left col-12 mb-2 mt-1">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h5 class="content-header-title float-left pr-1 mb-0">About Tab Edit</h5>
+                <h5 class="content-header-title float-left pr-1 mb-0">Pricing Plan page</h5>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb p-0 mb-0">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{ route('about_tab.index') }}">About Tab</a>
+                        <li class="breadcrumb-item"><a href="{{ route('package.index') }}">Pricing Plan</a>
                         </li>
-                        <li class="breadcrumb-item active">About TAb Edit
+                        <li class="breadcrumb-item active">Pricing Plan Edit
                         </li>
                     </ol>
                 </div>

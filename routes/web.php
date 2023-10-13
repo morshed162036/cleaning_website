@@ -19,6 +19,14 @@ use App\Http\Controllers\Server\Blog\BlogPostController;
 use App\Http\Controllers\Server\ContactController;
 use App\Http\Controllers\Server\OrderController;
 
+use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\AboutPageController;
+use App\Http\Controllers\Client\ContactPageController;
+use App\Http\Controllers\Client\GalleryPageController;
+use App\Http\Controllers\Client\OrderPageController;
+use App\Http\Controllers\Client\BlogPageController;
+use App\Http\Controllers\Client\ServiceController as Service;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,11 +42,19 @@ use App\Http\Controllers\Server\OrderController;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('server.login');
-});
+Route::get('/',[HomeController::class,'index'])->name('client.home');
+// Route::get('/admin', function () {
+//     return view('server.login');
+// });
 
 Route::prefix('/')->group(function(){
+    Route::resource('service-page',Service::class);
+    Route::get('about-page',[AboutPageController::class,'index'])->name('client.about-page');
+    Route::get('contact-page',[ContactPageController::class,'index'])->name('client.contact-page');
+    Route::post('contact-page',[ContactPageController::class,'store'])->name('client.contact-page-store');
+    Route::get('gallery-page',[GalleryPageController::class,'index'])->name('client.gallery-page');
+    Route::resource('order-page', OrderPageController::class);
+    Route::resource('blog-page', BlogPageController::class);
     Route::match(['get','post'],'login',[AdminController::class,'login'])->name('login');
     Route::group(['middleware'=>['user']],function(){
         Route::get('logout',[AdminController::class,'logout'])->name('logout');

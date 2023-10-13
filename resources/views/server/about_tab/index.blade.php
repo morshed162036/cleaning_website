@@ -48,7 +48,7 @@
                         <ol class="breadcrumb p-0 mb-0">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                             </li>
-                            <li class="breadcrumb-item active">Service Details
+                            <li class="breadcrumb-item active">About Tab
                             </li>
                         </ol>
                     </div>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('address');
             $table->text('description');
+            $table->biginteger('plan_id')->default(0);
             $table->date('date');
             $table->time('start_time');
             $table->time('end_time');
