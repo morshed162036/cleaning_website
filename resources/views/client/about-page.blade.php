@@ -99,18 +99,15 @@
                                     <ul class="social-list">
                                         <li><a href="@if ($member->facebook)
                                             https://{{ $member->facebook }}
-                                        @else
-                                            {{ '#' }}
+                                        
                                         @endif"><i class="icon-facebook-logo1"></i></a></li>
                                         <li><a href="@if ($member->twitter)
                                             https://{{ $member->twitter }}
-                                        @else
-                                            {{ '#' }}
+                                        
                                         @endif"><i class="icon-twitter-logo1"></i></a></li>
                                         <li><a href="@if ($member->instagram)
                                             https://{{ $member->instagram }}
-                                        @else
-                                            {{ '#' }}
+                                        
                                         @endif"><i class="icon-instagram-logo1"></i></a></li>
                                     </ul>
                                 </div>

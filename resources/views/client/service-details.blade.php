@@ -74,8 +74,7 @@
                                     class="active"
                                 @endif><a href="@if ($service->service_details)
                                     {{ route('service-page.show',$service->service_details->id) }}
-                                @else
-                                    '#'
+                               
                                 @endif">{{ $service->title }}</a></li>
                                 @endforeach
 						</ul>

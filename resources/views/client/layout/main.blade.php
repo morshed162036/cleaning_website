@@ -2,8 +2,8 @@
 
 <body class="page-index">
 	<div class="loading-content">
-		<div class="loaded-text" data-text="Zariq Ltd - cleaning website">
-			Zariq Ltd - cleaning website
+		<div class="loaded-text" data-text="Better Work Technical Services LLc">
+			Better Work Technical Services LLc
 		</div>
 	</div>
 

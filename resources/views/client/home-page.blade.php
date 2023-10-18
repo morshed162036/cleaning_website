@@ -68,7 +68,7 @@
                         <p class="p-lg">We have top class experts regarding every services mentioned. Select form
                             our wide range of services below.</p>
                     </div>
-                    <div class=" row">
+                    <div class="row">
                     @if ($services)
                         @foreach ($services as $service)
                             <div class="col-lg-4">
@@ -82,8 +82,6 @@
                                         <h3>{{ $service->title }}</h3>
                                         <a href="@if ($service->service_details)
                                             {{ route('service-page.show',$service->service_details->id) }}
-                                        @else
-                                            '#'
                                         @endif" class="btn btn-default"> View details</a>
                                     </div>
                                 </div>
@@ -405,7 +403,7 @@
     <!-- News block -->
     <div class="block">
         <div class="container">
-            <h2 class="text-center h-lg h-decor">Cleaning Industry News</h2>
+            <h2 class="text-center h-lg h-decor">Latest Blog</h2>
             <div class="text-center max-700">
                 <p class="p-lg">We write about industry developments, training, health and safety, eco-friendly
                     cleaning products, recycling practices and advice for working with professional cleaners.</p>

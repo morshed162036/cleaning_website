@@ -24,7 +24,7 @@ class HomeController extends Controller
         $pricingplans = PricingPlane::get()->all();
         $abouts = About_tab::where('status','Active')->orderBy('order','ASC')->get()->all();
         $banners = Banner::where('status','Active')->get()->all();
-        $services = Service::with('service_details')->get()->all();
+        $services = Service::with('service_details')->paginate(6);
         $service_count = Service::get()->count();
         //dd($banners);
         return view('client.home-page')->with(compact('banners','reviews','counter','services','service_count','pricingplans','abouts','blogs'));

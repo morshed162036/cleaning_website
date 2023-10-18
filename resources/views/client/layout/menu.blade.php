@@ -21,18 +21,15 @@
             <ul class="social-list">
                 <li><a href="@if ($company->facebook)
                     https://{{ $company->facebook }}
-                @else
-                    {{ '#' }}
+               
                 @endif"><i class="icon-facebook-logo1"></i></a></li>
                 <li><a href="@if ($company->twitter)
                     https://{{ $company->twitter }}
-                @else
-                    {{ '#' }}
+                
                 @endif"><i class="icon-twitter-logo1"></i></a></li>
                 <li><a href="@if ($company->instagram)
                     https://{{ $company->instagram }}
-                @else
-                    {{ '#' }}
+    
                 @endif"><i class="icon-instagram-logo1"></i></a></li>
             </ul>
         </div>
@@ -58,18 +55,15 @@
                 <ul class="social-list">
                     <li><a href="@if ($company->facebook)
                         https://{{ $company->facebook }}
-                    @else
-                        {{ '#' }}
+                   
                     @endif"><i class="icon-facebook-logo1"></i></a></li>
                     <li><a href="@if ($company->twitter)
                         https://{{ $company->twitter }}
-                    @else
-                        {{ '#' }}
+                   
                     @endif"><i class="icon-twitter-logo1"></i></a></li>
                     <li><a href="@if ($company->instagram)
                         https://{{ $company->instagram }}
-                    @else
-                        {{ '#' }}
+                   
                     @endif"><i class="icon-instagram-logo1"></i></a></li>
                 </ul>
                 <div class="quote-button-wrap">
@@ -96,8 +90,7 @@
                                     
                                 <li><a href="@if ($service->service_details)
                                     {{ route('service-page.show',$service->service_details->id) }}
-                                @else
-                                    '#'
+                                
                                 @endif">{{ $service->title }}</a></li>
                                 @endforeach
                             </ul>

@@ -21,7 +21,7 @@
 		<div class="block breadcrumbs">
 			<div class="container">
 				<ul class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="{{ route('client.home') }}">Home</a></li>
 					<li>About Us</li>
 				</ul>
 			</div>

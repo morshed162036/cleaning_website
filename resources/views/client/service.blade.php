@@ -42,8 +42,7 @@
 									<div class="post-image">
 										<a href="@if ($service->service_details)
 											{{ route('service-page.show',$service->service_details->id) }}
-										@else
-											'#'
+										
 										@endif"></a><img src="{{ asset('images/service/'.$service->image) }}" alt="">
 									</div>
 									<h4 class="service-box-title">{{ $service->title }}</h4>
@@ -55,8 +54,7 @@
 									</div>
 									<a href="@if ($service->service_details)
 										{{ route('service-page.show',$service->service_details->id) }}
-									@else
-										'#'
+									
 									@endif" class="service-box-more">view Details
 										<i class="icon-play"></i>
 									</a>

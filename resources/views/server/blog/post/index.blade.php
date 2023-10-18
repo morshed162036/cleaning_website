@@ -89,7 +89,9 @@
                                                     <tr>
                                                         <td><img src="{{ asset('images/blog/'.$post->image) }}" alt="" height="150px"></td>
                                                         <td class="text-bold-600" >{{ $post->title }}</td>
-                                                        <td>{{ $post->category->title }}</td>
+                                                        <td>@if ($post->category)
+                                                            {{ $post->category->title }}
+                                                            @endif</td>
                                                         <td>{{ $post->post }}</td>
                                                         <td>{{ $post->created_at }}</td>
                                                         

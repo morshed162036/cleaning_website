@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Server\Service;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Server\Service\Service;
+use App\Models\Server\Service\Service_detail;
 use Image;
 use Illuminate\Support\Facades\File;
 class ServiceController extends Controller
@@ -115,11 +116,21 @@ class ServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        $service = Service::findorFail($id);
+        $service = Service::with('service_details')->findorFail($id);
         $exists = 'images/service/'.$service->image;
         if(File::exists($exists))
         {
             File::delete($exists);
+        }
+        if($service->service_details)
+        {
+            $details = Service_detail::findorFail($service->service_details->id);
+            $exists_d = 'images/service/'.$service->service_details->image;
+            if(File::exists($exists_d))
+            {
+                File::delete($exists_d);
+            }
+            $details->delete();
         }
         $service->delete();
         return redirect(route('service.index'))->with('success','Service Delete Successfully!');

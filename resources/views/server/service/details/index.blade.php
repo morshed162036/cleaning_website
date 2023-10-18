@@ -87,7 +87,9 @@
                                                 @foreach ($details as $detail)
                                                     <tr>
                                                         <td><img src="{{ asset('images/service/'.$detail->image) }}" alt="" height="150px"></td>
-                                                        <td class="text-bold-600" >{{ $detail->service->title }}</td>
+                                                        <td class="text-bold-600" >@if ($detail->service)
+                                                            {{ $detail->service->title }}
+                                                        @endif</td>
                                                         <td>{{ $detail->description }}</td>
                                                         <td>{{ $detail->our_plan }}</td>
                                                         

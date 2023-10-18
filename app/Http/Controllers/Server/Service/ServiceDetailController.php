@@ -52,7 +52,7 @@ class ServiceDetailController extends Controller
                 //Generate New Image Name
                 $imageName = time().'.'.$extension;
                 $imagePath = 'images/service/'.$imageName;
-                Image::make($image_temp)->resize(900,600)->save($imagePath);
+                Image::make($image_temp)->resize(1920,1080)->save($imagePath);
                 $detail->image = $imageName;
             }
         }
@@ -117,8 +117,8 @@ class ServiceDetailController extends Controller
                 //Generate New Image Name
                 $imageName = time().'.'.$extension;
                 $imagePath = 'images/service/'.$imageName;
-                Image::make($image_temp)->resize(900,600)->save($imagePath);
-                $service->image = $imageName;
+                Image::make($image_temp)->resize(1920,1080)->save($imagePath);
+                $detail->image = $imageName;
             }
         }
 

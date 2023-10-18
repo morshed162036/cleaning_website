@@ -74,7 +74,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-Createon1"><i class="bx bx-file"></i></span>
                                                 </div>
-                                                <input type="file" class="form-control" aria-describedby="basic-Createon1" name="image" onchange="loadFile(event)" required>
+                                                <input type="file" class="form-control" aria-describedby="basic-Createon1" name="image" onchange="loadFile(event)">
                                             </div>
                                         </fieldset>
                                         @if($banner->image != null)
@@ -97,7 +97,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-Createon1"><i class="bx bx-spreadsheet"></i></span>
                                                 </div>
-                                                <textarea class="form-control" id="basicTextarea" rows="3" placeholder="" name="second_text" required>{{ $banner->first_text }}</textarea>
+                                                <textarea class="form-control" id="basicTextarea" rows="3" placeholder="" name="second_text" required>{{ $banner->second_text }}</textarea>
                                             </div>
                                         </fieldset>
                                         <button type="submit" class="btn btn-primary mt-2 btn-lg mx-1">Update</button>

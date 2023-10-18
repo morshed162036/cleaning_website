@@ -14,18 +14,15 @@
 						<ul class="social-list">
 							<li><a href="@if ($company->facebook)
 								https://{{ $company->facebook }}
-							@else
-								{{ '#' }}
+		
 							@endif"><i class="icon-facebook-logo1" id="social-list"></i></a></li>
 							<li><a href="@if ($company->twitter)
 								https://{{ $company->twitter }}
-							@else
-								{{ '#' }}
+		
 							@endif"><i class="icon-twitter-logo1" id="social-list"></i></a></li>
 							<li><a href="@if ($company->instagram)
 								https://{{ $company->instagram }}
-							@else
-								{{ '#' }}
+		
 							@endif"><i class="icon-instagram-logo1" id="social-list"></i></a></li>
 						</ul>
 					</div>
@@ -36,9 +33,7 @@
 						@foreach ($services as $service)
 							<li><a class="footer_text" href="@if ($service->service_details)
 								{{ route('service-page.show',$service->service_details->id) }}
-							@else
-								'#'
-							@endif">{{ $service->title }}</a></li>
+								@endif">{{ $service->title }}</a></li>
 						@endforeach
 					</ul>
 				</div>
